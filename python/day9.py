@@ -29,14 +29,13 @@ def part2(inp):
     sizes = []
     height = len(inp)
     width = len(inp[0])
-    marked = [[False for x in line] for line in inp]
     for x in range(len(inp)):
         for y in range(len(inp[x])):
-            if marked[x][y] or inp[x][y] == 9:
+            if inp[x][y] == 9:
                 continue
 
             open = [(x, y)]
-            marked[x][y] = True
+            inp[x][y] = 9
             closed = []
 
             while open:
@@ -44,8 +43,8 @@ def part2(inp):
                 for (dx, dy) in DIRECTIONS:
                     nx = sx + dx
                     ny = sy + dy
-                    if isValid(nx, ny, height, width) and inp[nx][ny] < 9 and not marked[nx][ny]:
-                        marked[nx][ny] = True
+                    if isValid(nx, ny, height, width) and inp[nx][ny] < 9:
+                        inp[nx][ny] = 9
                         open.append((nx, ny))
 
                 closed.append((sx, sy))
@@ -57,7 +56,7 @@ def main():
     with open("../data/9.in", "r") as f:
         inp = parse(f) 
         print(part1(inp)) 
-        print(part2(inp))
+        print(part2(inp[:]))
 
 if __name__ == "__main__":
     main() 
