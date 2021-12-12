@@ -19,9 +19,7 @@ def search(g, u, path, allowDouble):
         elif v.isupper():
             count += search(g, v, path, allowDouble)
         elif v not in path:
-            path.add(v)
-            count += search(g, v, path, allowDouble)
-            path.remove(v)
+            count += search(g, v, path | {v}, allowDouble)
         elif allowDouble and v != START:
             count += search(g, v, path, False)
     return count
