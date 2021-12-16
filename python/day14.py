@@ -1,4 +1,3 @@
-from math import ceil
 from collections import Counter, defaultdict
 
 PART_1_ITERATIONS = 10
@@ -49,7 +48,6 @@ def ceil_half(n):
 
 def part2(initial, rules):
     pair_count = defaultdict(int)
-    new_pair_count = defaultdict(int)
 
     for idx in range(1, len(initial)):
         pair = initial[idx - 1 : idx + 1]
