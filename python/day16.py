@@ -26,9 +26,6 @@ OPS_MAP = {
     7: lambda iterable: next(iterable) == next(iterable),
 }
 
-def peek(n, s):
-    return s[:n]
-
 def consume(n, s):
     return int(s[:n], 2), s[n:]
 
